@@ -3,6 +3,7 @@ import json
 import hashlib
 from datetime import datetime
 import time
+import getpass
 from pathlib import Path
 
 
@@ -147,11 +148,13 @@ class EditChecker:
 
                     for file_path, change_type, size in changes:
                         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                        user = getpass.getuser()
                         if change_type:
                             change_record = {
                                 "file": str(file_path).split("\\")[-1],
                                 "type": change_type,
-                                "time": timestamp
+                                "time": timestamp,
+                                'user':user
                             }
 
                             if size is not None:

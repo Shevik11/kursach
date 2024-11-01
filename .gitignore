@@ -1,1 +1,5 @@
 .idea
+instance/
+history.json
+file_history.json
+test_files
