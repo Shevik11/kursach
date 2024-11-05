@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Редагування файлу</title>
+    <link rel="stylesheet" href="../static/css/edit_files.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Редагування файлу</h2>
+        <form action="/edit_file/{{ filename }}" method="post">
+            <textarea name="content" rows="20" cols="80">{{ content }}</textarea><br><br>
+            <button type="submit">Зберегти</button>
+        </form>
+    </div>
+</body>
+</html>
