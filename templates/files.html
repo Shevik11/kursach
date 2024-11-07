@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Файловий менеджер</title>
+    <link rel="stylesheet" href="../static/css/upload.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Завантаження та управління файлами</h2>
+
+        <!-- Форма завантаження файлу -->
+        <div class="upload-section">
+            <h3>Завантажити новий файл</h3>
+            <form action="{{ url_for('files') }}" method="post" enctype="multipart/form-data">
+                <input type="file" name="file" accept=".txt,.docx" required>
+                <button type="submit">Завантажити</button>
+            </form>
+        </div>
+
+        <!-- Список файлів -->
+        <div class="files-section">
+            <h3>Список файлів</h3>
+            <ul class="file-list">
+                {% for file in files %}
+                <li class="file-item">
+                    <span>{{ file }}</span>
+                    <div class="file-info">
+                        {{ file.split('.')[-1].upper() }}
+                    </div>
+                    <div class="file-actions">
+                        <a href="{{ url_for('files', action='edit', filename=file) }}" class="edit-btn">Редагувати</a>
+                        <a href="{{ url_for('files', action='delete', filename=file) }}" class="delete-btn" onclick="return confirm('Ви впевнені?')">Видалити</a>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!-- Форма редагування файлу -->
+        {% if filename and content %}
+        <div class="edit-section">
+            <h3>Редагувати файл: {{ filename }}</h3>
+            <form action="{{ url_for('files') }}" method="post">
+                <input type="hidden" name="filename" value="{{ filename }}">
+                <textarea name="content" rows="10" required>{{ content }}</textarea>
+                <textarea name="description" placeholder="Опис змін" required></textarea>
+                <button type="submit">Зберегти зміни</button>
+            </form>
+        </div>
+        {% endif %}
+
+        <div class="navigation">
+            <a href="{{ url_for('logout') }}" class="logout-btn">Вийти</a>
+        </div>
+    </div>
+</body>
+</html>
