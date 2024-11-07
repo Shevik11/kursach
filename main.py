@@ -5,9 +5,10 @@ from datetime import datetime
 import time
 import getpass
 from pathlib import Path
+import threading
 
 
-class EditChecker:
+class FileWatcher:
     def __init__(self, path_to_watch, file_types=None, history_file='history.json'):
         """
         path_to_watch: шлях до файлу або папки
@@ -19,6 +20,7 @@ class EditChecker:
         self.last_states = self._get_directory_state()
         self.history = []
         self._load_history()
+        self.stop_event = threading.Event()  # Add stop_event
 
     def _load_history(self):
         # Load history from file
@@ -34,7 +36,7 @@ class EditChecker:
     def _save_history(self):
         # Save history to file
         with open(self.history_file, 'w', encoding='utf-8') as f:
-            json.dump(self.history, f, indent=2)
+            json.dump(self.history, f, ensure_ascii=False, indent=2)
 
     def _get_file_hash(self, file_path):
         """Отримує хеш файлу"""
@@ -141,7 +143,7 @@ class EditChecker:
         print("Натисніть Ctrl+C для завершення")
 
         try:
-            while True:
+            while not self.stop_event.is_set():  # Check stop_event
                 try:
                     current_states = self._get_directory_state()
                     changes = self._detect_change_type(self.last_states, current_states)
@@ -154,7 +156,7 @@ class EditChecker:
                                 "file": str(file_path).split("\\")[-1],
                                 "type": change_type,
                                 "time": timestamp,
-                                'user':user
+                                'user': user
                             }
 
                             if size is not None:
@@ -168,7 +170,6 @@ class EditChecker:
                     self.last_states = current_states
                     time.sleep(interval)
 
-
                 except Exception as e:
                     print(f"Помилка під час відстеження: {e}")
                     time.sleep(interval)
@@ -177,7 +178,29 @@ class EditChecker:
             print("\nЗавершую відстеження...")
 
 
+    def stop(self):
+        self.stop_event.set()  # Set stop_event
+
+    def edit_file(self, file_path, content):
+        try:
+            with open(file_path, 'w', encoding='utf-8') as f:
+                f.write(content)
+            timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            user = getpass.getuser()
+            change_record = {
+                "file": str(file_path).split("\\")[-1],
+                "type": "modified",
+                "time": timestamp,
+                'user': user
+            }
+            self.history.append(change_record)
+            self._save_history()
+            print(f"[{timestamp}] {file_path}: modified")
+        except Exception as e:
+            print(f"Помилка при редагуванні файлу {file_path}: {e}")
+
+
 if __name__ == '__main__':
-    checker = EditChecker("./test_files",  # шлях до папки
+    checker = FileWatcher("./test_files",  # шлях до папки
                           file_types=['.txt', '.doc', '.docx', '.pdf'])  # список розширень файлів
     checker.watch()
