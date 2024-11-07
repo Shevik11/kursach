@@ -3,3 +3,6 @@ instance/
 history.json
 file_history.json
 test_files
+__pycache__/
+uploads/
+test.txt
