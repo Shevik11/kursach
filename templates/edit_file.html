@@ -10,7 +10,7 @@
         <h2>Редагування файлу: {{ filename }}</h2>
 
         <!-- Форма для редагування вмісту файлу -->
-        <form id="editForm" action="{{ url_for('files') }}" method="post">
+        <form id="editForm" action="{{ url_for('list') }}" method="post">
             <input type="hidden" name="filename" value="{{ filename }}">
             <div class="form-group">
                 <label for="content">Вміст файлу:</label>

@@ -6,3 +6,4 @@ test_files
 __pycache__/
 uploads/
 test.txt
+.env

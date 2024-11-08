@@ -8,7 +8,7 @@
 <body>
     <div class="container">
         <h2>Реєстрація</h2>
-        <form action="/register" method="post">
+        <form action="{{ url_for('auth.register') }}" method="post">
             <label for="username">Ім'я користувача:</label>
             <input type="text" id="username" name="username" required><br><br>
 
@@ -17,7 +17,7 @@
 
             <button type="submit">Зареєструватися</button>
         </form>
-        <p>Вже є обліковий запис? <a href="/login">Увійти</a></p>
+        <p>Вже є обліковий запис? <a href="{{ url_for('auth.login') }}">Увійти</a></p>
     </div>>
 </body>
 </html>

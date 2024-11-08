@@ -9,7 +9,7 @@ import threading
 
 
 class FileWatcher:
-    def __init__(self, path_to_watch, file_types=None, history_file='history.json'):
+    def __init__(self, path_to_watch, file_types=None, history_file="history.json"):
         """
         path_to_watch: шлях до файлу або папки
         file_types: список розширень файлів для відстеження (наприклад: ['.txt', '.doc', '.pdf'])
@@ -25,23 +25,23 @@ class FileWatcher:
     def _load_history(self):
         # Load history from file
         if os.path.exists(self.history_file):
-            with open(self.history_file, 'r', encoding='utf-8') as f:
+            with open(self.history_file, "r", encoding="utf-8") as f:
                 self.history = json.load(f)
                 if not isinstance(self.history, list):
                     self.history = []
         else:
-            print('bad with history')
+            print("bad with history")
             self.history = []
 
     def _save_history(self):
         # Save history to file
-        with open(self.history_file, 'w', encoding='utf-8') as f:
+        with open(self.history_file, "w", encoding="utf-8") as f:
             json.dump(self.history, f, ensure_ascii=False, indent=2)
 
     def _get_file_hash(self, file_path):
         """Отримує хеш файлу"""
         try:
-            with open(file_path, 'rb') as f:
+            with open(file_path, "rb") as f:
                 return hashlib.md5(f.read()).hexdigest()
         except Exception as e:
             print(f"Помилка при читанні файлу {file_path}: {e}")
@@ -61,7 +61,7 @@ class FileWatcher:
                     states[str(self.path_to_watch)] = file_state
         else:
             try:
-                for file_path in self.path_to_watch.rglob('*'):
+                for file_path in self.path_to_watch.rglob("*"):
                     if file_path.is_file() and self._should_watch_file(file_path):
                         file_state = self._get_file_state(file_path)
                         if file_state:
@@ -78,7 +78,7 @@ class FileWatcher:
 
     def _get_file_hash(self, file_path):
         try:
-            with open(file_path, 'rb') as f:
+            with open(file_path, "rb") as f:
                 return hashlib.md5(f.read()).hexdigest()
         except Exception as e:
             print(f"Помилка при читанні файлу {file_path}: {e}")
@@ -92,10 +92,10 @@ class FileWatcher:
 
             stats = os.stat(file_path)
             return {
-                'size': stats.st_size,
-                'hash': self._get_file_hash(file_path),
-                'mtime': stats.st_mtime,
-                'file': str(file_path).split("\\")[-1]
+                "size": stats.st_size,
+                "hash": self._get_file_hash(file_path),
+                "mtime": stats.st_mtime,
+                "file": str(file_path).split("\\")[-1],
             }
         except Exception as e:
             print(f"Помилка при отриманні стану файлу {file_path}: {e}")
@@ -107,7 +107,7 @@ class FileWatcher:
             if self._should_watch_file(self.path_to_watch):
                 states[self.path_to_watch] = self._get_file_state(self.path_to_watch)
         else:
-            for file_path in self.path_to_watch.rglob('*'):
+            for file_path in self.path_to_watch.rglob("*"):
                 if file_path.is_file() and self._should_watch_file(file_path):
                     states[file_path] = self._get_file_state(file_path)
         return states
@@ -117,10 +117,10 @@ class FileWatcher:
         changes = []
         for file_path, new_state in current_state.items():
             if file_path not in old_stage:
-                changes.append((file_path, "created", new_state['size']))
-            elif new_state['hash'] != old_stage[file_path]['hash']:
-                old_size = old_stage[file_path]['size']
-                new_size = new_state['size']
+                changes.append((file_path, "created", new_state["size"]))
+            elif new_state["hash"] != old_stage[file_path]["hash"]:
+                old_size = old_stage[file_path]["size"]
+                new_size = new_state["size"]
                 if new_size > old_size:
                     change_type = "added"
                 elif new_size < old_size:
@@ -156,7 +156,7 @@ class FileWatcher:
                                 "file": str(file_path).split("\\")[-1],
                                 "type": change_type,
                                 "time": timestamp,
-                                'user': user
+                                "user": user,
                             }
 
                             if size is not None:
@@ -177,13 +177,12 @@ class FileWatcher:
         except KeyboardInterrupt:
             print("\nЗавершую відстеження...")
 
-
     def stop(self):
         self.stop_event.set()  # Set stop_event
 
     def edit_file(self, file_path, content):
         try:
-            with open(file_path, 'w', encoding='utf-8') as f:
+            with open(file_path, "w", encoding="utf-8") as f:
                 f.write(content)
             timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
             user = getpass.getuser()
@@ -191,7 +190,7 @@ class FileWatcher:
                 "file": str(file_path).split("\\")[-1],
                 "type": "modified",
                 "time": timestamp,
-                'user': user
+                "user": user,
             }
             self.history.append(change_record)
             self._save_history()
@@ -200,7 +199,8 @@ class FileWatcher:
             print(f"Помилка при редагуванні файлу {file_path}: {e}")
 
 
-if __name__ == '__main__':
-    checker = FileWatcher("./test_files",  # шлях до папки
-                          file_types=['.txt', '.doc', '.docx', '.pdf'])  # список розширень файлів
+if __name__ == "__main__":
+    checker = FileWatcher(
+        "./test_files", file_types=[".txt", ".doc", ".docx", ".pdf"]  # шлях до папки
+    )  # список розширень файлів
     checker.watch()
