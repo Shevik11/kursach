@@ -1,9 +1,12 @@
-from flask import Blueprint, render_template, redirect, url_for, request, flash
+from flask import Blueprint, render_template, redirect, url_for, request, flash, jsonify
 from models import User
-from app import db, bcrypt
+from app import db, bcrypt, app
 from flask_login import login_user, logout_user, login_required
+from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
+
 
 auth_bp = Blueprint("auth", __name__)
+jwt = JWTManager(app)
 
 
 @auth_bp.route("/register", methods=["GET", "POST"])
@@ -34,7 +37,9 @@ def login():
         user = User.query.filter_by(username=username).first()
         if user and bcrypt.check_password_hash(user.password, password):
             login_user(user)
-            return redirect(url_for("list"))  # перенаправляємо на /files/
+            access_token = create_access_token(identity=user.username)
+            print(jsonify({"access_token": access_token}))
+            return redirect(url_for("list"))
         else:
             flash("Невдалий вхід. Перевірте логін та пароль", "danger")
     return render_template("login.html")
@@ -51,3 +56,9 @@ def logout():
     logout_user()
     flash("Ви вийшли з системи", "info")
     return redirect(url_for("auth.login"))
+
+@auth_bp.route("/protected", methods=["GET"])
+@jwt_required()
+def protected():
+    current_user = get_jwt_identity()
+    return jsonify({"message": f"Hello, {current_user}!"}), 200
