@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Редагування файлу</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Редагування файлу</h1>
+        <h3>{{ filename }}</h3>
+        <form method="post" id="editForm">
+            <div class="mb-3">
+                <label for="content" class="form-label">Вміст файлу</label>
+                <textarea id="content" name="content" class="form-control" rows="15">{{ content }}</textarea>
+            </div>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#descriptionModal">Зберегти зміни</button>
+            <a href="{{ url_for('dashboard.dashboard') }}" class="btn btn-secondary">Скасувати</a>
+        </form>
+    </div>
+
+    <!-- Модальне вікно для введення опису -->
+    <div class="modal fade" id="descriptionModal" tabindex="-1" aria-labelledby="descriptionModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="descriptionModalLabel">Опис змін</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="{{ url_for('dashboard.edit_file', filename=filename) }}">
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Короткий опис змін</label>
+                            <textarea id="description" name="description" class="form-control" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Зберегти опис і зміни</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Підключення Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
