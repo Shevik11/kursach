@@ -10,35 +10,36 @@
     <div class="container mt-5">
         <h1 class="text-center">Редагування файлу</h1>
         <h3>{{ filename }}</h3>
-        <form method="post" id="editForm">
+        <!-- Об'єднана форма -->
+        <form method="post" id="editForm" action="{{ url_for('dashboard.edit_file', filename=filename) }}">
             <div class="mb-3">
                 <label for="content" class="form-label">Вміст файлу</label>
-                <textarea id="content" name="content" class="form-control" rows="15">{{ content }}</textarea>
+                <textarea id="content" name="content" class="form-control" rows="15" required>{{ content }}</textarea>
             </div>
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#descriptionModal">Зберегти зміни</button>
             <a href="{{ url_for('dashboard.dashboard') }}" class="btn btn-secondary">Скасувати</a>
-        </form>
-    </div>
 
-    <!-- Модальне вікно для введення опису -->
-    <div class="modal fade" id="descriptionModal" tabindex="-1" aria-labelledby="descriptionModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="descriptionModalLabel">Опис змін</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form method="post" action="{{ url_for('dashboard.edit_file', filename=filename) }}">
-                        <div class="mb-3">
-                            <label for="description" class="form-label">Короткий опис змін</label>
-                            <textarea id="description" name="description" class="form-control" rows="3" required></textarea>
+            <!-- Модальне вікно для введення опису -->
+            <div class="modal fade" id="descriptionModal" tabindex="-1" aria-labelledby="descriptionModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="descriptionModalLabel">Опис змін</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <button type="submit" class="btn btn-primary">Зберегти опис і зміни</button>
-                    </form>
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label for="description" class="form-label">Короткий опис змін</label>
+                                <textarea id="description" name="description" class="form-control" rows="3" required></textarea>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Зберегти опис і зміни</button>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+        </form>
     </div>
 
     <!-- Підключення Bootstrap JS -->
