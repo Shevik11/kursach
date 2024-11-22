@@ -1,11 +1,10 @@
-import firebase_admin
-from firebase_admin import auth, credentials
 from flask_mail import Mail
 import pyrebase
 import os
 from firebase_admin import credentials, firestore
 from dotenv import load_dotenv
 from firebase_admin import storage
+
 load_dotenv()
 import firebase_admin
 
@@ -14,9 +13,12 @@ import firebase_admin
 if not firebase_admin._apps:
     # Only initialize if Firebase hasn't been initialized yet
     cred = credentials.Certificate("./admin.json")
-    firebase_admin.initialize_app(cred, {
-        'storageBucket': 'courseproj-d97be.firebasestorage.app'  # Correct bucket name
-    })
+    firebase_admin.initialize_app(
+        cred,
+        {
+            "storageBucket": "courseproj-d97be.firebasestorage.app"  # Correct bucket name
+        },
+    )
 
 # Ініціалізація Pyrebase
 firebase_config = {

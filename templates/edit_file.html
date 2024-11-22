@@ -43,6 +43,10 @@
     </div>
 
     <!-- Підключення Bootstrap JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js">
+        document.querySelector('#descriptionModal .btn-primary').addEventListener('click', function() {
+        document.getElementById('editForm').submit();
+        });
+    </script>
 </body>
 </html>

@@ -78,7 +78,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="editFileForm" method="post" action="{{ url_for('edit.edit_file', filename='') }}">
+                    <form id="editFileForm" method="post" action="{{ url_for('dashboard.edit_file', filename='') }}">
                         <div class="mb-3">
                             <label for="fileDescription" class="form-label">Короткий опис змін</label>
                             <textarea class="form-control" id="fileDescription" name="description" rows="3" required></textarea>
@@ -98,11 +98,12 @@
         editModal.addEventListener('show.bs.modal', function (event) {
             const button = event.relatedTarget;
             const filename = button.getAttribute('data-filename');
+            console.log(filename);
             document.getElementById('filenameInput').value = filename;
 
             // Оновлення шляху для action у формі
             const form = document.getElementById('editFileForm');
-            form.action = "{{ url_for('edit.edit_file', filename='') }}" + filename;
+            form.action = "{{ url_for('dashboard.edit_file', filename='') }}" + filename;
         });
     </script>
 </body>
