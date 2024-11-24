@@ -1,7 +1,7 @@
-from flask import request, jsonify, render_template, session, redirect, url_for
+from flask import request, jsonify, render_template, session, redirect, url_for, flash
 from .auth_blueprint import auth_blueprint
 from .auth_services import register_user, login_user
-from flask import flash
+
 
 @auth_blueprint.route("/register", methods=["GET", "POST"])
 def register():
@@ -11,8 +11,7 @@ def register():
             password = request.form.get("password")
             email = request.form.get("email")
 
-            # Виклик логіки реєстрації
-            response = register_user(username, email, password)
+            response = register_user(email, password, username)
             return jsonify(response), 201
         except Exception as e:
             return jsonify({"error": str(e)}), 400
@@ -26,7 +25,7 @@ def login():
             email = request.form.get("email")
             password = request.form.get("password")
 
-            # Виклик логіки входу
+            # Виклик сервісу входу
             user_session = login_user(email, password)
 
             if user_session:

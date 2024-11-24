@@ -6,15 +6,16 @@ from .dashboard_extensions import UPLOAD_FOLDER, logger, ALLOWED_EXTENSIONS
 from extensions import db, mail
 
 
-
 def get_file_path(username, filename):
     """Отримує повний шлях до файлу користувача."""
     return os.path.join(UPLOAD_FOLDER, username, filename)
+
 
 def get_username(user_id):
     """Отримує ім'я користувача з бази даних."""
     user_data = db.collection("users").document(user_id).get().to_dict()
     return user_data.get("username", user_id)
+
 
 def remove_file_and_update_db(user_ref, file_path, filename):
     """Видаляє файл і оновлює базу даних."""
@@ -24,6 +25,7 @@ def remove_file_and_update_db(user_ref, file_path, filename):
         flash(f"File '{filename}' deleted successfully.", "success")
     else:
         flash(f"File '{filename}' does not exist.", "error")
+
 
 def read_file_content(file_path, filename):
     """Зчитує вміст файлу."""

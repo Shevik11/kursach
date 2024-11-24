@@ -35,7 +35,10 @@ pyrebase_app = pyrebase.initialize_app(firebase_config)
 pyrebase_auth = pyrebase_app.auth()
 db = firestore.client()
 
-# Ініціалізація Firebase
 # Ініціалізація Flask-Mail
 mail = Mail()
 f_bucket = storage.bucket(os.getenv("storageBucket"))
+
+
+UPLOAD_FOLDER = "uploads"
+ALLOWED_EXTENSIONS = {"txt", "docx"}

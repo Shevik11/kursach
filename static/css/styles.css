@@ -1,218 +1,218 @@
-/* Загальні стилі */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
-}
-.container {
-    width: 80%;
-    margin: 50px auto;
-    background: #fff;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-}
-h2 {
-    text-align: center;
-    color: #333;
-}
-h3 {
-    color: #555;
-}
+/*!* Загальні стилі *!*/
+/*body {*/
+/*    font-family: Arial, sans-serif;*/
+/*    background-color: #f4f4f4;*/
+/*    margin: 0;*/
+/*    padding: 0;*/
+/*}*/
+/*.container {*/
+/*    width: 80%;*/
+/*    margin: 50px auto;*/
+/*    background: #fff;*/
+/*    padding: 20px;*/
+/*    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);*/
+/*    border-radius: 5px;*/
+/*}*/
+/*h2 {*/
+/*    text-align: center;*/
+/*    color: #333;*/
+/*}*/
+/*h3 {*/
+/*    color: #555;*/
+/*}*/
 
-/* Список файлів */
-.file-list {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-.file-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 15px;
-    padding: 10px;
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
-.file-info {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    justify-content: space-between;
-}
-.file-name {
-    font-weight: bold;
-    color: #333;
-    margin-right: 10px;
-}
+/*!* Список файлів *!*/
+/*.file-list {*/
+/*    list-style-type: none;*/
+/*    padding: 0;*/
+/*    margin: 0;*/
+/*}*/
+/*.file-item {*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: space-between;*/
+/*    margin-bottom: 15px;*/
+/*    padding: 10px;*/
+/*    background-color: #f9f9f9;*/
+/*    border: 1px solid #ddd;*/
+/*    border-radius: 5px;*/
+/*}*/
+/*.file-info {*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    width: 100%;*/
+/*    justify-content: space-between;*/
+/*}*/
+/*.file-name {*/
+/*    font-weight: bold;*/
+/*    color: #333;*/
+/*    margin-right: 10px;*/
+/*}*/
 
-/* Дії з файлами */
-.file-actions {
-    display: flex;
-    gap: 10px; /* Відстань між кнопками */
-}
+/*!* Дії з файлами *!*/
+/*.file-actions {*/
+/*    display: flex;*/
+/*    gap: 10px; !* Відстань між кнопками *!*/
+/*}*/
 
-.action-btn {
-    padding: 5px 15px;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: bold;
-    text-align: center;
-    color: #fff;
-    border-radius: 4px;
-    transition: background-color 0.2s ease;
-}
+/*.action-btn {*/
+/*    padding: 5px 15px;*/
+/*    text-decoration: none;*/
+/*    font-size: 14px;*/
+/*    font-weight: bold;*/
+/*    text-align: center;*/
+/*    color: #fff;*/
+/*    border-radius: 4px;*/
+/*    transition: background-color 0.2s ease;*/
+/*}*/
 
-/* Індивідуальні стилі кнопок */
-.view-btn {
-    background-color: #007bff; /* Синій */
-}
-.view-btn:hover {
-    background-color: #0056b3;
-}
-.edit-btn {
-    background-color: #28a745; /* Зелений */
-}
-.edit-btn:hover {
-    background-color: #218838;
-}
-.delete-btn {
-    background-color: #dc3545; /* Червоний */
-}
-.delete-btn:hover {
-    background-color: #c82333;
-}
+/*!* Індивідуальні стилі кнопок *!*/
+/*.view-btn {*/
+/*    background-color: #007bff; !* Синій *!*/
+/*}*/
+/*.view-btn:hover {*/
+/*    background-color: #0056b3;*/
+/*}*/
+/*.edit-btn {*/
+/*    background-color: #28a745; !* Зелений *!*/
+/*}*/
+/*.edit-btn:hover {*/
+/*    background-color: #218838;*/
+/*}*/
+/*.delete-btn {*/
+/*    background-color: #dc3545; !* Червоний *!*/
+/*}*/
+/*.delete-btn:hover {*/
+/*    background-color: #c82333;*/
+/*}*/
 
 
-/* Основні стилі */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f9f9f9;
-    color: #333;
-}
+/*!* Основні стилі *!*/
+/*body {*/
+/*    font-family: Arial, sans-serif;*/
+/*    margin: 0;*/
+/*    padding: 0;*/
+/*    background-color: #f9f9f9;*/
+/*    color: #333;*/
+/*}*/
 
-header {
-    background-color: #007BFF;
-    color: white;
-    padding: 1em 0;
-    text-align: center;
-}
+/*header {*/
+/*    background-color: #007BFF;*/
+/*    color: white;*/
+/*    padding: 1em 0;*/
+/*    text-align: center;*/
+/*}*/
 
-header h1 {
-    margin: 0;
-    font-size: 2em;
-}
+/*header h1 {*/
+/*    margin: 0;*/
+/*    font-size: 2em;*/
+/*}*/
 
-header nav {
-    margin-top: 0.5em;
-}
+/*header nav {*/
+/*    margin-top: 0.5em;*/
+/*}*/
 
-header nav a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-}
+/*header nav a {*/
+/*    color: white;*/
+/*    text-decoration: none;*/
+/*    font-weight: bold;*/
+/*}*/
 
-header nav a:hover {
-    text-decoration: underline;
-}
+/*header nav a:hover {*/
+/*    text-decoration: underline;*/
+/*}*/
 
-/* Основний вміст */
-main {
-    padding: 2em;
-}
+/*!* Основний вміст *!*/
+/*main {*/
+/*    padding: 2em;*/
+/*}*/
 
-form {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 1em;
-    background: white;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-}
+/*form {*/
+/*    max-width: 400px;*/
+/*    margin: 0 auto;*/
+/*    padding: 1em;*/
+/*    background: white;*/
+/*    border: 1px solid #ccc;*/
+/*    border-radius: 10px;*/
+/*}*/
 
-form label {
-    display: block;
-    margin-bottom: 0.5em;
-    font-weight: bold;
-}
+/*form label {*/
+/*    display: block;*/
+/*    margin-bottom: 0.5em;*/
+/*    font-weight: bold;*/
+/*}*/
 
-form input {
-    width: 100%;
-    padding: 0.5em;
-    margin-bottom: 1em;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
+/*form input {*/
+/*    width: 100%;*/
+/*    padding: 0.5em;*/
+/*    margin-bottom: 1em;*/
+/*    border: 1px solid #ccc;*/
+/*    border-radius: 5px;*/
+/*}*/
 
-/* Стилі для кнопок */
-button {
-    padding: 0.7em;
-    border: none;
-    border-radius: 5px;
-    font-size: 1em;
-    cursor: pointer;
-    display: inline-block;
-    text-align: center;
-}
+/*!* Стилі для кнопок *!*/
+/*button {*/
+/*    padding: 0.7em;*/
+/*    border: none;*/
+/*    border-radius: 5px;*/
+/*    font-size: 1em;*/
+/*    cursor: pointer;*/
+/*    display: inline-block;*/
+/*    text-align: center;*/
+/*}*/
 
-button:hover {
-    background-color: #0056b3;
-}
+/*button:hover {*/
+/*    background-color: #0056b3;*/
+/*}*/
 
-form button {
-    width: 100%;  /* Завантаження та кнопка для файлів будуть однакові по ширині */
-}
+/*form button {*/
+/*    width: 100%;  !* Завантаження та кнопка для файлів будуть однакові по ширині *!*/
+/*}*/
 
-/* Список файлів */
-#files ul {
-    list-style-type: none;
-    padding: 0;
-}
+/*!* Список файлів *!*/
+/*#files ul {*/
+/*    list-style-type: none;*/
+/*    padding: 0;*/
+/*}*/
 
-#files ul li {
-    background: white;
-    padding: 1em;
-    margin-bottom: 0.5em;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+/*#files ul li {*/
+/*    background: white;*/
+/*    padding: 1em;*/
+/*    margin-bottom: 0.5em;*/
+/*    border: 1px solid #ccc;*/
+/*    border-radius: 5px;*/
+/*    display: flex;*/
+/*    justify-content: space-between;*/
+/*    align-items: center;*/
+/*}*/
 
-/* Кнопки для файлів */
-/* Стиль для кнопок у списку файлів */
-.file-action-buttons .edit-button {
-    background-color: #28a745; /* Зелений */
-    color: white;
-    margin-right: 5px; /* Відступ між кнопками */
-}
+/*!* Кнопки для файлів *!*/
+/*!* Стиль для кнопок у списку файлів *!*/
+/*.file-action-buttons .edit-button {*/
+/*    background-color: #28a745; !* Зелений *!*/
+/*    color: white;*/
+/*    margin-right: 5px; !* Відступ між кнопками *!*/
+/*}*/
 
-.file-action-buttons .edit-button:hover {
-    background-color: #218838;
-}
+/*.file-action-buttons .edit-button:hover {*/
+/*    background-color: #218838;*/
+/*}*/
 
-.file-action-buttons .delete-button {
-    background-color: #dc3545; /* Червоний */
-    color: white;
-}
+/*.file-action-buttons .delete-button {*/
+/*    background-color: #dc3545; !* Червоний *!*/
+/*    color: white;*/
+/*}*/
 
-.file-action-buttons .delete-button:hover {
-    background-color: #c82333;
-}
+/*.file-action-buttons .delete-button:hover {*/
+/*    background-color: #c82333;*/
+/*}*/
 
-/* Футер */
-footer {
-    text-align: center;
-    padding: 1em 0;
-    background-color: #f1f1f1;
-    color: #666;
-    font-size: 0.9em;
-    margin-top: 2em;
-}
+/*!* Футер *!*/
+/*footer {*/
+/*    text-align: center;*/
+/*    padding: 1em 0;*/
+/*    background-color: #f1f1f1;*/
+/*    color: #666;*/
+/*    font-size: 0.9em;*/
+/*    margin-top: 2em;*/
+/*}*/

@@ -6,6 +6,7 @@ from google.cloud import firestore
 from docx import Document
 from extensions import db
 
+
 def get_user_id_from_session():
     """Отримує ідентифікатор користувача з сесії."""
     return session.get("user_id")

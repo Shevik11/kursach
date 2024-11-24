@@ -4,25 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Вхід</title>
-    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
 </head>
-<body>
-    <header>
-        <h1>Вхід</h1>
+<body class="bg-light text-dark">
+    <header class="bg-primary text-white py-4">
+        <h1 class="text-center">Вхід</h1>
     </header>
-    <main>
-            <form action="{{ url_for('auth.login') }}" method="POST">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-
-            <label for="password">Пароль:</label>
-            <input type="password" id="password" name="password" required>
-
-            <button type="submit">Увійти</button>
+    <main class="d-flex justify-content-center align-items-center min-vh-100">
+        <form action="{{ url_for('auth.login') }}" method="POST" class="bg-white p-5 rounded shadow w-100" style="max-width: 400px;">
+            <div class="mb-3">
+                <label for="email" class="form-label">Email:</label>
+                <input type="email" id="email" name="email" required class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Пароль:</label>
+                <input type="password" id="password" name="password" required class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Увійти</button>
         </form>
     </main>
-    <footer>
+    <footer class="text-center py-4 bg-light">
         <p>&copy; 2024 Ваш Проєкт</p>
     </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

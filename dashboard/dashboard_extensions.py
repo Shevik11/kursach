@@ -2,6 +2,7 @@ from dotenv import load_dotenv
 import logging
 from itsdangerous import URLSafeTimedSerializer
 import os
+
 # Завантаження змінних середовища
 load_dotenv()
 
